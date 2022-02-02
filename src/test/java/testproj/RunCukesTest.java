@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        //features = {"src/test/java/testproj/"},
+        features = {"src/test/resources/TesteAuto"},
         //glue = "test.StepDefinitions"
-        //plugin = { "pretty", "html:target/html-reports" },
+        plugin = { "pretty", "html:local_test_report/html-reports.html" }
         //publish = true
         //strict = true
 )

@@ -57,6 +57,7 @@ public class generalSteps {
         //add the headless argument
         //options.addArguments("headless");
         options.addArguments("enable-javascript=1");
+        options = new ChromeOptions().setHeadless(true);
         driver = new ChromeDriver(options);
     }
 

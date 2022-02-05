@@ -24,10 +24,19 @@ At build time the container will run the set of tests in order to download all d
 
 Run container using:
 ```
+docker run -v /local_writable_path:/tmp/test_results:Z runanitests
+```
+
+On some machines that will not work without mentioning the localhost as source for container:
+```
 docker run -v /local_writable_path:/tmp/test_results:Z localhost/runanitests
 ```
+
 At every run two different tests results report files are generated in container at /tmp/test_results path. 
 At the end of the run they will be copied in /local_writable_path to be easily accessible.
+
+
+Other usefull commands:
 
 List all containers:
 ```
@@ -38,9 +47,16 @@ List all containers and runs:
 ```
 docker ps -a
 ```
+
+Interact with docker container:
+```
+docker run -it [container_id or name] bash
+```
+
+
 Remove container:
 ```
-docker rm [ID]
+docker rm [container_id or name]
 ```
 
 Remove all runs:

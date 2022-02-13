@@ -31,15 +31,6 @@ public class generalSteps {
             prop2 = new Properties();
             prop2.load(input2);
             return prop2.getProperty(variable_name);
-/*        try (InputStream input = new FileInputStream("src/test/resources/config/cucumber.properties")) {
-
-            prop = new Properties();
-
-            // load a properties file
-            prop.load(input);
-
-            // get the property value and print it out
-*/
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -70,13 +61,12 @@ public class generalSteps {
     @When("I open the {string} url")
     public void i_open_url(String given_url) {
         System.out.format("Variable name: %s\n", given_url);
-        //given_url_global = retrieve_properties_variable(given_url);
         given_url_global = given_url;
         System.out.format("URL to open: %s\n", given_url);
         driver.get(given_url);
     }
 
-    @Then("The page loads successfully and HTTP success code is returned")
+    @Then("Then page loads successfully and HTTP success code is returned")
     public void i_check_for_success_http_code() throws IOException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
@@ -96,7 +86,6 @@ public class generalSteps {
 
     @Then("Title displayed is the {string}")
     public void check_title(String expected_title) {
-        //assertEquals(retrieve_properties_variable(expected_title), driver.getTitle());
         assertEquals(expected_title, driver.getTitle());
     }
 
@@ -104,9 +93,6 @@ public class generalSteps {
     public void check_login_button(String expected_element_id, String item_identifier) {
         switch (item_identifier) {
             case "ID" ->
-
-                    //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                    //wait.until(ExpectedConditions.presenceOfElementLocated(By.id(retrieve_properties_variable(expected_element_id))));
                     assertTrue(driver.findElement(By.id(retrieve_properties_variable(expected_element_id))).isDisplayed());
             case "xpath" -> assertTrue(driver.findElement(By.xpath(retrieve_properties_variable(expected_element_id))).isDisplayed());
 
